@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Input, FormBtn} from "../../components/Form";
-import Results from "../../components/Results";
+import Article from "../../components/Article";
 import API from "../../utils/API";
 
 class Home extends Component {
@@ -76,7 +76,25 @@ class Home extends Component {
           </div>
         </div>
 
-      	<Results />
+        <div className="panel panel-default">
+          <div className="panel-heading text-center">
+            <h2>Results</h2>
+          </div>
+          <div className="panel-body">
+            {!this.state.articles.length ? (
+                <h1 className="text-center">No Recipes to Display</h1>
+              )
+              : (<div>
+                {this.state.articles.map(article => {
+                  return(<Article 
+                          key={article._id}
+                          headline={article.headline.main}
+                          pubdate={article.pub_date}
+                          url={article.web_url} />)
+                })}
+              </div>)}
+          </div>
+        </div>
 
       </div>
     )
