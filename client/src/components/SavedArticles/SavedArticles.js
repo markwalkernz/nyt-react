@@ -1,5 +1,5 @@
 import React from "react";
-import SavedArticle from "../SavedArticle";
+import Article from "../Article";
 
 const SavedArticles = () =>
   <div className="panel panel-default">
@@ -7,7 +7,7 @@ const SavedArticles = () =>
       <h2>Saved Articles</h2>
     </div>
     <div className="panel-body">
-      <SavedArticle />
+      <Article />
     </div>
   </div>;
 
