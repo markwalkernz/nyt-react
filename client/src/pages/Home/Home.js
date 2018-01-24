@@ -1,20 +1,85 @@
 import React, { Component } from "react";
-import Search from "../../components/Search";
+import {Input, FormBtn} from "../../components/Form";
 import Results from "../../components/Results";
+import API from "../../utils/API";
 
 class Home extends Component {
-  // Initialize this.state.articles as an empty array
+  // Initial state
   state = {
-    articles: []
+    articles: [],
+    topic: "",
+    startYear: "",
+    endYear: ""
+  };
+
+  handleInputChange = event => {
+    // get the name and value from event.target
+    // set state with new value
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    // When the form is submitted, prevent its default behavior and get articles
+    event.preventDefault();
+
+    console.log(this.state);
+
+    const searchTerms = {
+      topic: this.state.topic,
+      startYear: this.state.startYear,
+      endYear: this.state.endYear
+    }
+
+    API.getNewArticles(searchTerms)
+      .then(res => {this.setState({ articles: res.data.docs })
+          console.log("new articles obtained");
+          console.log(this.state.articles);
+        })
+      .catch(err => console.log(err));
   };
 
   render() {
     return (
       <div>
-      	<Search />
+        <div className="panel panel-default">
+          <div className="panel-heading text-center">
+            <h2>Search</h2>
+          </div>
+          <div className="panel-body">
+
+            <form>        
+              <Input
+                name="topic"
+                value={this.state.topic}
+                onChange={this.handleInputChange}
+                placeholder="Topic" />
+              
+              <Input
+                name="startYear"
+                value={this.state.startYear}
+                onChange={this.handleInputChange}
+                placeholder="Start Year" />
+              
+              <Input
+                name="endYear"
+                value={this.state.endYear}
+                onChange={this.handleInputChange}
+                placeholder="End Year" />
+
+              <FormBtn onClick={this.handleFormSubmit}>Search</FormBtn>
+
+            </form>
+
+          </div>
+        </div>
+
       	<Results />
+
       </div>
-    );
+    )
   }
 }
 
