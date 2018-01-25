@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// Schema for the MongoDB articles database
 const articleSchema = new Schema({
   headline: { type: String, required: true },
   pubDate: { type: Date, required: true },

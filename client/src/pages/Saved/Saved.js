@@ -59,7 +59,7 @@ class Saved extends Component {
               </ul>
             ) : (<h1 className="text-center">No articles saved</h1>)}
           </div>
-        </div>;
+        </div>
       </div>
     );
   }
