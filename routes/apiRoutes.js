@@ -5,6 +5,7 @@ const articlesController = require("../controllers/articlesController");
 // authorisation key for NYT site
 const NYTKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
+// matches with "/api/newArticles"
 // get new articles from the NYT site
 router.get("/newArticles", (req, res) => {
 
