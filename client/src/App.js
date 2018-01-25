@@ -14,13 +14,13 @@ import {
 const App = () =>
   
   <Container>
-  <Nav />
-  <Router>
-    <Switch>
-      <Route exact path="/saved" component={Saved} />
-      <Route path="/" component={Home}/>
-    </Switch>
-  </Router>
+    <Nav />
+    <Router>
+      <Switch>
+        <Route exact path="/saved" component={Saved} />
+        <Route path="/" component={Home}/>
+      </Switch>
+    </Router>
   </Container>
 
 export default App;
