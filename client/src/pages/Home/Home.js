@@ -32,6 +32,7 @@ class Home extends Component {
       endYear: this.state.endYear
     }
 
+    // get new articles from the NYT site and set state with results
     API.getNewArticles(searchTerms)
       .then(res => {this.setState({ articles: res.data.docs })
           console.log("new articles obtained");
@@ -52,8 +53,6 @@ class Home extends Component {
       })
         .then(res => alert("article saved"))
         .catch(err => console.log(err))
-
-
   }
 
   render() {
