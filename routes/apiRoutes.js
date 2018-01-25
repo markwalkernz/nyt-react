@@ -39,13 +39,13 @@ router.get("/newArticles", (req, res) => {
 });
 
 // Matches with "/api/articles"
-router.route("/")
+router.route("/articles")
   .get(articlesController.findAll)
   .post(articlesController.create);
 
 // Matches with "/api/articles/:id"
 router
-  .route("/:id")
+  .route("/articles/:id")
   .get(articlesController.findById)
   .put(articlesController.update)
   .delete(articlesController.remove);

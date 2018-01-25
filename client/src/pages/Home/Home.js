@@ -42,20 +42,19 @@ class Home extends Component {
 
   handleSaveArticle = article => {
     // save an article when save button is clicked
-    //event.preventDefault();
     console.log("save button clicked");
     console.log(article);
 
-    // API.saveArticle({
-    //     headline: article.headline.main,
-    //     pubDate: article.pub_date,
-    //     url: article.web_url
-    //   })
-    //     .then(res => console.log("article saved")
-    //     .catch(err => console.log(err))
+    API.saveArticle({
+        headline: article.headline.main,
+        pubDate: article.pub_date,
+        url: article.web_url
+      })
+        .then(res => alert("article saved"))
+        .catch(err => console.log(err))
 
 
-  };
+  }
 
   render() {
     return (
