@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Input, FormBtn} from "../../components/Form";
 import API from "../../utils/API";
+import "./Home.css";
 
 class Home extends Component {
   // Initial state
@@ -21,6 +22,7 @@ class Home extends Component {
   };
 
   handleFormSubmit = event => {
+
     // When the form is submitted get new articles
     event.preventDefault();
 
@@ -42,10 +44,8 @@ class Home extends Component {
   };
 
   handleSaveArticle = article => {
-    // save an article when save button is clicked
-    console.log("save button clicked");
-    console.log(article);
 
+    // save an article when save button is clicked
     API.saveArticle({
         headline: article.headline.main,
         pubDate: article.pub_date,

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import "./Saved.css";
 
 class Saved extends Component {
   // Initial state
@@ -10,14 +11,18 @@ class Saved extends Component {
     url: ""
   };
 
-  // Load articles from DB on page load
+
   componentDidMount() {
+
+    // Load articles from DB on page load
     this.loadArticles();
+
   }
 
-  // Load articles from DB
+
   loadArticles = () => {
 
+    // Load articles from DB
     API.getArticles()
       .then(res =>
         this.setState({ savedArticles: res.data, headline: "", pubDate: "", url: "" })
@@ -59,7 +64,7 @@ class Saved extends Component {
               </ul>
             ) : (<h1 className="text-center">No articles saved</h1>)}
           </div>
-        </div>;
+        </div>
       </div>
     );
   }
