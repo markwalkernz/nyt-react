@@ -22,8 +22,9 @@ export default {
   // deleteArticle: function(id) {
   //   return axios.delete("/api/articles/" + id);
   // },
-  // // Saves an article to the database
-  // saveBook: function(ArticleData) {
-  //   return axios.post("/api/articles", articleData);
-  // }
+
+  // Saves an article to the database
+  saveArticle: function(articleData) {
+    return axios.post("/api/articles", articleData);
+  }
 };

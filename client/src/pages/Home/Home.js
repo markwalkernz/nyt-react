@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {Input, FormBtn} from "../../components/Form";
-import Article from "../../components/Article";
 import API from "../../utils/API";
 
 class Home extends Component {
@@ -22,7 +21,7 @@ class Home extends Component {
   };
 
   handleFormSubmit = event => {
-    // When the form is submitted, prevent its default behavior and get articles
+    // When the form is submitted get new articles
     event.preventDefault();
 
     console.log(this.state);
@@ -39,6 +38,23 @@ class Home extends Component {
           console.log(this.state.articles);
         })
       .catch(err => console.log(err));
+  };
+
+  handleSaveArticle = article => {
+    // save an article when save button is clicked
+    //event.preventDefault();
+    console.log("save button clicked");
+    console.log(article);
+
+    // API.saveArticle({
+    //     headline: article.headline.main,
+    //     pubDate: article.pub_date,
+    //     url: article.web_url
+    //   })
+    //     .then(res => console.log("article saved")
+    //     .catch(err => console.log(err))
+
+
   };
 
   render() {
@@ -81,18 +97,20 @@ class Home extends Component {
             <h2>Results</h2>
           </div>
           <div className="panel-body">
-            {!this.state.articles.length ? (
-                <h1 className="text-center">No Recipes to Display</h1>
-              )
-              : (<div>
+            {this.state.articles.length ? (
+              <ul className="list-group">
                 {this.state.articles.map(article => {
-                  return(<Article 
-                          key={article._id}
-                          headline={article.headline.main}
-                          pubdate={article.pub_date}
-                          url={article.web_url} />)
+                  return (
+                  <li className="list-group-item" key={article._id}>
+                    <p><strong>{article.headline.main}</strong></p>
+                    <p>Publication Date: {article.pub_date}</p>
+                    <a rel="noreferrer noopener" href={article.web_url} target="_blank">Go to article</a>
+                    <button className="btn btn-primary" onClick={() => this.handleSaveArticle(article)}>Save</button>
+                  </li>
+                  )
                 })}
-              </div>)}
+              </ul>
+            ) : (<h1 className="text-center">No articles, try a new search!</h1>)}
           </div>
         </div>
 
