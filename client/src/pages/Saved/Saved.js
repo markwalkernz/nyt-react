@@ -6,6 +6,7 @@ class Saved extends Component {
   // Initial state
   state = {
     savedArticles: [],
+    snippet: "",
     headline: "",
     pubDate: "",
     url: ""
@@ -25,7 +26,7 @@ class Saved extends Component {
     // Load articles from DB
     API.getArticles()
       .then(res =>
-        this.setState({ savedArticles: res.data, headline: "", pubDate: "", url: "" })
+        this.setState({ savedArticles: res.data, headline: "", snippet: "", pubDate: "", url: "" })
       )
       .catch(err => console.log(err));
   };
@@ -55,6 +56,7 @@ class Saved extends Component {
                   return (
                   <li className="list-group-item" key={article._id}>
                     <p><strong>{article.headline}</strong></p>
+                    <p>{article.snippet}</p>
                     <p>Publication Date: {article.pubDate}</p>
                     <a rel="noreferrer noopener" href={article.url} target="_blank">Go to article</a>
                     <button className="btn btn-danger" onClick={() => this.handleDeleteArticle(article._id)}>Delete</button>
