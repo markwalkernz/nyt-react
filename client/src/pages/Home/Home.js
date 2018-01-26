@@ -48,6 +48,7 @@ class Home extends Component {
     // save an article when save button is clicked
     API.saveArticle({
         headline: article.headline.main,
+        snippet: article.snippet,
         pubDate: article.pub_date,
         url: article.web_url
       })
@@ -60,7 +61,7 @@ class Home extends Component {
       <div>
         <div className="panel panel-default">
           <div className="panel-heading text-center">
-            <h2>Search</h2>
+            <h2>New York Times Article Search</h2>
           </div>
           <div className="panel-body">
 
@@ -101,6 +102,7 @@ class Home extends Component {
                   return (
                   <li className="list-group-item" key={article._id}>
                     <p><strong>{article.headline.main}</strong></p>
+                    <p>{article.snippet}</p>
                     <p>Publication Date: {article.pub_date}</p>
                     <a rel="noreferrer noopener" href={article.web_url} target="_blank">Go to article</a>
                     <button className="btn btn-primary" onClick={() => this.handleSaveArticle(article)}>Save</button>

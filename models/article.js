@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 // Schema for the MongoDB articles database
 const articleSchema = new Schema({
   headline: { type: String, required: true },
+  snippet:  { type: String, required: false },
   pubDate: { type: Date, required: true },
   url: { type: String, required: true }
 });
